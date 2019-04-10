@@ -1,0 +1,1 @@
+include ':app', ':latte_annotations', ':latte_compiler', ':latte_core', ':latte_ec'
