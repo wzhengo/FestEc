@@ -2,23 +2,27 @@ package com.wz.latte_core.app;
 
 import android.content.Context;
 
-import java.util.HashMap;
-
 /**
  * Created by WangZhen on 2019/4/11.
  */
 public final class Latte {
 
     public static Configurator init(Context context) {
-        getConfigurations().put(ConfigType.APPLICATION_CONTEXT.name(), context.getApplicationContext());
+        Configurator.getInstance()
+                .getLatteConfigs()
+                .put(ConfigKeys.APPLICATION_CONTEXT, context.getApplicationContext());
         return Configurator.getInstance();
     }
 
-    private static HashMap<String, Object> getConfigurations() {
-        return Configurator.getInstance().getLatteConfigs();
+    public static Configurator getConfigurator() {
+        return Configurator.getInstance();
+    }
+
+    public static <T> T getConfigurations(Object key) {
+        return getConfigurator().getConfiguration(key);
     }
 
     public static Context getApplication() {
-        return (Context) getConfigurations().get(ConfigType.APPLICATION_CONTEXT.name());
+        return getConfigurations(ConfigKeys.APPLICATION_CONTEXT);
     }
 }

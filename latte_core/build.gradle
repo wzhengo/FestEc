@@ -50,4 +50,13 @@ dependencies {
     //ButterKnife依赖
     implementation 'com.jakewharton:butterknife:9.0.0-rc2'
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc2'
+
+    //网络请求依赖
+    api 'com.squareup.okio:okio:1.13.0'
+    api 'com.squareup.okhttp3:okhttp:3.9.1'
+    api 'com.squareup.retrofit2:retrofit:2.3.0'
+    api 'com.squareup.retrofit2:converter-scalars:2.3.0'
+
+    //Loader依赖
+    api 'com.wang.avi:library:2.1.3'
 }
