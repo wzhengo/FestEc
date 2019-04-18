@@ -30,10 +30,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-/**
- * Created by wangzhen on 2018/2/28.
- */
-
 public final class FileUtil {
 
     //格式化的模板

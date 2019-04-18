@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">latte_ec</string>
+    <string name="fa_weixin">{fa-weixin}</string>
+    <string name="sign_up">注册</string>
+    <string name="name">姓名</string>
+    <string name="email">邮箱</string>
+    <string name="phone_number">手机号码</string>
+    <string name="password">密码</string>
+    <string name="repeat_password">重复密码</string>
+    <string name="register">注册</string>
+    <string name="already_sign_up">已经注册了？请登录</string>
 </resources>

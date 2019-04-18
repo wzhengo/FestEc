@@ -12,10 +12,6 @@ import com.wz.latte_core.util.DimenUtil;
 
 import java.util.ArrayList;
 
-/**
- * Created by wangzhen on 2018/2/28.
- */
-
 public class LatteLoader {
 
     private static final int LOADER_SIZE_SCALE = 8;

@@ -29,4 +29,8 @@ dependencies {
     annotationProcessor project(':latte_compiler')
     implementation 'com.jakewharton:butterknife:9.0.0-rc2'
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc2'
+
+    //Web查看应用界面和数据库
+    api 'com.facebook.stetho:stetho:1.4.2'
+    api 'com.facebook.stetho:stetho-okhttp3:1.4.2'
 }

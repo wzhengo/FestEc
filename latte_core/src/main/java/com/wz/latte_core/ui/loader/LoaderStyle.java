@@ -1,9 +1,5 @@
 package com.wz.latte_core.ui.loader;
 
-/**
- * Created by wangzhen on 2018/2/27.
- */
-
 @SuppressWarnings("unused")
 public enum LoaderStyle {
     BallPulseIndicator,
