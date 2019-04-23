@@ -9,6 +9,8 @@ import android.view.View;
 
 import com.wz.latte_core.delegate.LatteDelegate;
 import com.wz.latte_core.util.FileUtil;
+import com.wz.latte_core.wechat.LatteWeChat;
+import com.wz.latte_core.wechat.callbacks.IWeChatSignInCallBack;
 import com.wz.latte_ec.R;
 import com.wz.latte_ec.R2;
 
@@ -42,7 +44,12 @@ public class SignInDelegate extends LatteDelegate {
 
     @OnClick(R2.id.icon_sign_in_wechat)
     void onClickWeChat() {
+        LatteWeChat.getInstance().onSignSuccess(new IWeChatSignInCallBack() {
+            @Override
+            public void onSignInSuccess(String userInfo) {
 
+            }
+        }).signIn();
     }
 
     @OnClick(R2.id.btn_sign_in)
