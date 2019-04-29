@@ -11,6 +11,7 @@ import com.wz.latte_core.delegate.LatteDelegate;
 import com.wz.latte_ec.launcher.ILauncherListener;
 import com.wz.latte_ec.launcher.LauncherDelegate;
 import com.wz.latte_ec.launcher.OnLauncherFinishTag;
+import com.wz.latte_ec.main.EcBottomDelegate;
 import com.wz.latte_ec.sign.ISignListener;
 import com.wz.latte_ec.sign.SignInDelegate;
 
@@ -47,7 +48,7 @@ public class ExampleActivity extends ProxyActivity implements
         switch (tag) {
             case SIGNED:
                 Toast.makeText(this, "启动结束，用户登录了", Toast.LENGTH_LONG).show();
-                startWithPop(new ExampleDelegate());
+                startWithPop(new EcBottomDelegate());
                 break;
             case NOT_SIGNED:
                 Toast.makeText(this, "启动结束，用户没登录", Toast.LENGTH_LONG).show();

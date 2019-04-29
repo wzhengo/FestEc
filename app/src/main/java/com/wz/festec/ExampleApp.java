@@ -20,6 +20,8 @@ public class ExampleApp extends Application {
                 .withIcon(new FontAwesomeModule())
                 .withInterceptor(new DebugInterceptor("index", R.raw.test))
                 .withApiHost("http://127.0.0.1/")
+                .withWeChatAppId("")
+                .withWeChatAppSecret("")
                 .configure();
         initStetho();
         DatabaseManager.getInstance().init(this);
