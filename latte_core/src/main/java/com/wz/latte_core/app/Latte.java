@@ -14,15 +14,11 @@ public final class Latte {
         return Configurator.getInstance();
     }
 
-    public static Configurator getConfigurator() {
-        return Configurator.getInstance();
-    }
-
-    public static <T> T getConfigurations(Object key) {
+    public static <T> T getConfiguration(Object key) {
         return getConfigurator().getConfiguration(key);
     }
 
     public static Context getApplication() {
-        return getConfigurations(ConfigKeys.APPLICATION_CONTEXT);
+        return getConfiguration(ConfigKeys.APPLICATION_CONTEXT);
     }
 }

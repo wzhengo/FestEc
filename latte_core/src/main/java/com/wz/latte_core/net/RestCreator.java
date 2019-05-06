@@ -30,7 +30,7 @@ public class RestCreator {
     }
 
     private static final class RetrofitHolder {
-        private static final String BASE_URL = Latte.getConfigurations(ConfigKeys.API_HOST);
+        private static final String BASE_URL = Latte.getConfiguration(ConfigKeys.API_HOST);
         private static final Retrofit RETROFIT_CLIENT = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(OKHttpHolder.OK_HTTP_CLIENT)
@@ -41,7 +41,7 @@ public class RestCreator {
     private static final class OKHttpHolder {
         private static final int TIME_OUT = 60;
         private static final OkHttpClient.Builder BUILDER = new OkHttpClient.Builder();
-        private static final ArrayList<Interceptor> INTERCEPTORS = Latte.getConfigurations(ConfigKeys.INTERCEPTOR);
+        private static final ArrayList<Interceptor> INTERCEPTORS = Latte.getConfiguration(ConfigKeys.INTERCEPTOR);
 
         private static OkHttpClient.Builder addInterceptor() {
             if (INTERCEPTORS != null && !INTERCEPTORS.isEmpty()) {

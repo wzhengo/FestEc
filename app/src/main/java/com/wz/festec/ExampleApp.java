@@ -18,8 +18,9 @@ public class ExampleApp extends Application {
         super.onCreate();
         Latte.init(this)
                 .withIcon(new FontAwesomeModule())
-                .withInterceptor(new DebugInterceptor("index", R.raw.test))
-                .withApiHost("http://127.0.0.1/")
+//                .withApiHost("http://127.0.0.1/")
+                .withInterceptor(new DebugInterceptor("test", R.raw.test))
+                .withApiHost("http://mock.fulingjie.com/mock-android/api/")
                 .withWeChatAppId("")
                 .withWeChatAppSecret("")
                 .configure();

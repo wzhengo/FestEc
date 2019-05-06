@@ -14,8 +14,8 @@ import com.wz.latte_core.wechat.callbacks.IWeChatSignInCallBack;
  */
 public class LatteWeChat {
 
-    public static final String APP_ID = Latte.getConfigurations(ConfigKeys.WE_CHAT_APP_ID);
-    public static final String APP_SECRET = Latte.getConfigurations(ConfigKeys.WE_CHAT_APP_SECRET);
+    public static final String APP_ID = Latte.getConfiguration(ConfigKeys.WE_CHAT_APP_ID);
+    public static final String APP_SECRET = Latte.getConfiguration(ConfigKeys.WE_CHAT_APP_SECRET);
     private final IWXAPI WXAPI;
     private IWeChatSignInCallBack mSignInCallBack = null;
 
@@ -28,7 +28,7 @@ public class LatteWeChat {
     }
 
     private LatteWeChat() {
-        final Activity activity = Latte.getConfigurations(ConfigKeys.ACTIVITY);
+        final Activity activity = Latte.getConfiguration(ConfigKeys.ACTIVITY);
         WXAPI = WXAPIFactory.createWXAPI(activity, APP_ID, false);
         WXAPI.registerApp(APP_ID);
     }
