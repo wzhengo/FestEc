@@ -15,6 +15,8 @@ import com.wz.latte_ec.main.EcBottomDelegate;
 import com.wz.latte_ec.sign.ISignListener;
 import com.wz.latte_ec.sign.SignInDelegate;
 
+import qiu.niorgai.StatusBarCompat;
+
 public class ExampleActivity extends ProxyActivity implements
         ISignListener, ILauncherListener {
 
@@ -26,6 +28,7 @@ public class ExampleActivity extends ProxyActivity implements
             actionBar.hide();
         }
         Latte.getConfigurator().withActivity(this);
+        StatusBarCompat.translucentStatusBar(this,true);
     }
 
     @Override
@@ -36,11 +39,13 @@ public class ExampleActivity extends ProxyActivity implements
     @Override
     public void onSignInSuccess() {
         Toast.makeText(this, "登录成功", Toast.LENGTH_LONG).show();
+        startWithPop(new EcBottomDelegate());
     }
 
     @Override
     public void onSignUpSuccess() {
         Toast.makeText(this, "注册成功", Toast.LENGTH_LONG).show();
+        startWithPop(new EcBottomDelegate());
     }
 
     @Override
