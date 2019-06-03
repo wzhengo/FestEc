@@ -5,6 +5,7 @@ import android.app.Application;
 import com.facebook.stetho.Stetho;
 import com.joanzapata.iconify.fonts.FontAwesomeModule;
 import com.wz.latte_core.app.Latte;
+import com.wz.festec.event.TestEvent;
 import com.wz.latte_core.net.interceptors.DebugInterceptor;
 import com.wz.latte_ec.database.DatabaseManager;
 
@@ -21,6 +22,8 @@ public class ExampleApp extends Application {
 //                .withApiHost("http://127.0.0.1/")
                 .withInterceptor(new DebugInterceptor("test", R.raw.test))
                 .withApiHost("http://mock.fulingjie.com/mock-android/api/")
+                .withWebEvent("test",new TestEvent())
+                .withJavascriptInterface("latte")
                 .withWeChatAppId("")
                 .withWeChatAppSecret("")
                 .configure();
