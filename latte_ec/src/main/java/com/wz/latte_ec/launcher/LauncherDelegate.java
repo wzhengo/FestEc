@@ -9,7 +9,7 @@ import android.view.View;
 import com.wz.latte_core.app.AccountManager;
 import com.wz.latte_core.app.IUserChecker;
 import com.wz.latte_core.delegate.LatteDelegate;
-import com.wz.latte_core.ui.launcher.ScrollLauncherTag;
+import com.wz.latte_ui.launcher.ScrollLauncherTag;
 import com.wz.latte_core.util.LattePreference;
 import com.wz.latte_core.util.timer.BaseTimerTask;
 import com.wz.latte_core.util.timer.ITimerListener;

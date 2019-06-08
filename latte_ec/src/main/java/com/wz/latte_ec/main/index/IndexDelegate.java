@@ -12,8 +12,8 @@ import android.widget.EditText;
 
 import com.joanzapata.iconify.widget.IconTextView;
 import com.wz.latte_core.delegate.bottom.BottomItemDelegate;
-import com.wz.latte_core.ui.recycler.BaseDecoration;
-import com.wz.latte_core.ui.refresh.RefreshHandler;
+import com.wz.latte_ui.recycler.BaseDecoration;
+import com.wz.latte_ui.refresh.RefreshHandler;
 import com.wz.latte_ec.R;
 import com.wz.latte_ec.R2;
 import com.wz.latte_ec.main.EcBottomDelegate;

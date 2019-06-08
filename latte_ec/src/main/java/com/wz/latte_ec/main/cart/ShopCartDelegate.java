@@ -16,7 +16,8 @@ import com.joanzapata.iconify.widget.IconTextView;
 import com.wz.latte_core.delegate.bottom.BottomItemDelegate;
 import com.wz.latte_core.net.RestClient;
 import com.wz.latte_core.net.callback.ISuccess;
-import com.wz.latte_core.ui.recycler.MultipleItemEntity;
+import com.wz.latte_ui.recycler.MultipleItemEntity;
+import com.wz.latte_core.util.LatteLogger;
 import com.wz.latte_ec.R;
 import com.wz.latte_ec.R2;
 

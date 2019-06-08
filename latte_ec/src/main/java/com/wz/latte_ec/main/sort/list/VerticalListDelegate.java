@@ -9,7 +9,7 @@ import android.view.View;
 import com.wz.latte_core.delegate.LatteDelegate;
 import com.wz.latte_core.net.RestClient;
 import com.wz.latte_core.net.callback.ISuccess;
-import com.wz.latte_core.ui.recycler.MultipleItemEntity;
+import com.wz.latte_ui.recycler.MultipleItemEntity;
 import com.wz.latte_ec.R;
 import com.wz.latte_ec.R2;
 import com.wz.latte_ec.main.sort.SortDelegate;

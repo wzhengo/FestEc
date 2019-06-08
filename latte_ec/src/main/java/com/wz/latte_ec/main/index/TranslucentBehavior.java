@@ -8,7 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.AttributeSet;
 import android.view.View;
 
-import com.wz.latte_core.ui.recycler.RgbValue;
+import com.wz.latte_ui.recycler.RgbValue;
 import com.wz.latte_ec.R;
 
 /**

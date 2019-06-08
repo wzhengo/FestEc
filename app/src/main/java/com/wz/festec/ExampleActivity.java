@@ -39,25 +39,25 @@ public class ExampleActivity extends ProxyActivity implements
     @Override
     public void onSignInSuccess() {
         Toast.makeText(this, "登录成功", Toast.LENGTH_LONG).show();
-        startWithPop(new EcBottomDelegate());
+        getSupportDelegate().startWithPop(new EcBottomDelegate());
     }
 
     @Override
     public void onSignUpSuccess() {
         Toast.makeText(this, "注册成功", Toast.LENGTH_LONG).show();
-        startWithPop(new EcBottomDelegate());
+        getSupportDelegate().startWithPop(new EcBottomDelegate());
     }
 
     @Override
     public void onLauncherFinish(OnLauncherFinishTag tag) {
         switch (tag) {
             case SIGNED:
-                Toast.makeText(this, "启动结束，用户登录了", Toast.LENGTH_LONG).show();
-                startWithPop(new EcBottomDelegate());
+//                Toast.makeText(this, "启动结束，用户登录了", Toast.LENGTH_LONG).show();
+                getSupportDelegate().startWithPop(new EcBottomDelegate());
                 break;
             case NOT_SIGNED:
-                Toast.makeText(this, "启动结束，用户没登录", Toast.LENGTH_LONG).show();
-                startWithPop(new SignInDelegate());
+//                Toast.makeText(this, "启动结束，用户没登录", Toast.LENGTH_LONG).show();
+                getSupportDelegate().startWithPop(new SignInDelegate());
                 break;
             default:
                 break;

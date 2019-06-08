@@ -10,8 +10,8 @@ import com.bigkoo.convenientbanner.listener.OnItemClickListener;
 import com.wz.latte_core.app.AccountManager;
 import com.wz.latte_core.app.IUserChecker;
 import com.wz.latte_core.delegate.LatteDelegate;
-import com.wz.latte_core.ui.launcher.LauncherHolderCreator;
-import com.wz.latte_core.ui.launcher.ScrollLauncherTag;
+import com.wz.latte_ui.launcher.LauncherHolderCreator;
+import com.wz.latte_ui.launcher.ScrollLauncherTag;
 import com.wz.latte_core.util.LattePreference;
 import com.wz.latte_ec.R;
 
