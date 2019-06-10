@@ -12,17 +12,21 @@ import android.support.v7.widget.ViewStubCompat;
 import android.view.View;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
 import com.joanzapata.iconify.widget.IconTextView;
 import com.wz.latte_core.delegate.bottom.BottomItemDelegate;
 import com.wz.latte_core.net.RestClient;
 import com.wz.latte_core.net.callback.ISuccess;
-import com.wz.latte_ui.recycler.MultipleItemEntity;
 import com.wz.latte_core.util.LatteLogger;
 import com.wz.latte_ec.R;
 import com.wz.latte_ec.R2;
+import com.wz.latte_ec.pay.FastPay;
+import com.wz.latte_ec.pay.IAlPayResultListener;
+import com.wz.latte_ui.recycler.MultipleItemEntity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.WeakHashMap;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -31,7 +35,8 @@ import butterknife.OnClick;
  * @author wangzhen
  * @date 2019/06/03
  */
-public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, ICartItemListener {
+public class ShopCartDelegate extends BottomItemDelegate implements
+        ISuccess, ICartItemListener, IAlPayResultListener {
 
     @BindView(R2.id.rv_shop_cart)
     RecyclerView mRecyclerView;
@@ -104,6 +109,36 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IC
         checkItemCount();
     }
 
+    @OnClick(R2.id.tv_shop_cart_pay)
+    void onClickPay() {
+        createOrder();
+    }
+
+    //创建订单
+    private void createOrder(){
+        final String orderUrl = "你的生成订单的API";
+        final WeakHashMap<String, Object> orderParams = new WeakHashMap<>();
+        //加入你的参数
+        RestClient.builder()
+                .url(orderUrl)
+                .loader(getContext())
+                .params(orderParams)
+                .success(new ISuccess() {
+                    @Override
+                    public void onSuccess(String response) {
+                        //进行具体的支付
+                        LatteLogger.d("ORDER", response);
+                        final int orderId = JSON.parseObject(response).getInteger("result");
+                        FastPay.create(ShopCartDelegate.this)
+                                .setPayResultListener(ShopCartDelegate.this)
+                                .setOrderId(orderId)
+                                .beginPayDialog();
+                    }
+                })
+                .build()
+                .post();
+    }
+
     private void checkItemCount() {
         final int count = mAdapter.getItemCount();
         if (count == 0) {
@@ -164,5 +199,30 @@ public class ShopCartDelegate extends BottomItemDelegate implements ISuccess, IC
     public void onItemClick(double itemTotalPrice) {
         final double price = mAdapter.getTotalPrice();
         mTvTotalPrice.setText(String.valueOf(price));
+    }
+
+    @Override
+    public void onPaySuccess() {
+
+    }
+
+    @Override
+    public void onPaying() {
+
+    }
+
+    @Override
+    public void onPayFail() {
+
+    }
+
+    @Override
+    public void onPayCancel() {
+
+    }
+
+    @Override
+    public void onPayConnectError() {
+
     }
 }

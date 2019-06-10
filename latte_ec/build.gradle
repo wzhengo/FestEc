@@ -34,4 +34,5 @@ dependencies {
     api project(':latte_ui')
     implementation 'com.jakewharton:butterknife:9.0.0-rc2'
     annotationProcessor 'com.jakewharton:butterknife-compiler:9.0.0-rc2'
+    implementation files('libs/alipaySdk-20170922.jar')
 }
