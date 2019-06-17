@@ -25,7 +25,7 @@ public final class LatteLogger {
         }
     }
 
-    public static void d(String tag, String message) {
+    public static void d(String tag, Object message) {
         if (LEVEL <= DEBUG) {
             Logger.t(tag).d(message);
         }

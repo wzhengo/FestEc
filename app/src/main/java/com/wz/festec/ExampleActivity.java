@@ -15,6 +15,7 @@ import com.wz.latte_ec.main.EcBottomDelegate;
 import com.wz.latte_ec.sign.ISignListener;
 import com.wz.latte_ec.sign.SignInDelegate;
 
+import cn.jpush.android.api.JPushInterface;
 import qiu.niorgai.StatusBarCompat;
 
 public class ExampleActivity extends ProxyActivity implements
@@ -29,6 +30,18 @@ public class ExampleActivity extends ProxyActivity implements
         }
         Latte.getConfigurator().withActivity(this);
         StatusBarCompat.translucentStatusBar(this,true);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        JPushInterface.onPause(this);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        JPushInterface.onResume(this);
     }
 
     @Override
