@@ -9,9 +9,13 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.joanzapata.iconify.widget.IconTextView;
 import com.wz.latte_core.delegate.bottom.BottomItemDelegate;
+import com.wz.latte_core.util.callback.CallbackManager;
+import com.wz.latte_core.util.callback.CallbackType;
+import com.wz.latte_core.util.callback.IGlobalCallback;
 import com.wz.latte_ui.recycler.BaseDecoration;
 import com.wz.latte_ui.refresh.RefreshHandler;
 import com.wz.latte_ec.R;
@@ -19,6 +23,7 @@ import com.wz.latte_ec.R2;
 import com.wz.latte_ec.main.EcBottomDelegate;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 /**
  * Created by WangZhen on 2019-04-28.
@@ -37,6 +42,11 @@ public class IndexDelegate extends BottomItemDelegate {
     EditText mSearchView;
 
     private RefreshHandler mRefreshHandler;
+
+    @OnClick(R2.id.icon_index_scan)
+    void onClickScanQrCode(){
+        startScanWithCheck(getParentDelegate());
+    }
 
     private void initRefreshLayout() {
         mRefreshLayout.setColorSchemeResources(
@@ -72,5 +82,12 @@ public class IndexDelegate extends BottomItemDelegate {
     @Override
     public void onBindView(@Nullable Bundle savedInstanceState, View rootView) {
         mRefreshHandler = RefreshHandler.create(mRefreshLayout, mRecycleView, new IndexDataConverter());
+        CallbackManager.getInstance()
+                .addCallback(CallbackType.ON_SCAN, new IGlobalCallback<String>() {
+                    @Override
+                    public void executeCallback(@Nullable String args) {
+                        Toast.makeText(getContext(), args, Toast.LENGTH_SHORT).show();
+                    }
+                });
     }
 }

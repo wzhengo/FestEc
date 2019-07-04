@@ -88,4 +88,7 @@ dependencies {
     //图片剪裁
     //noinspection GradleDependency
     api 'com.github.yalantis:ucrop:2.2.2-native'
+
+    //二维码扫描
+    api 'me.dm7.barcodescanner:zbar:1.9.8'
 }

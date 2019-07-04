@@ -3,6 +3,7 @@ package com.wz.latte_core.delegate;
 import android.Manifest;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.widget.Toast;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 import com.wz.latte_core.ui.camera.CameraImageBean;
 import com.wz.latte_core.ui.camera.LatteCamera;
 import com.wz.latte_core.ui.camera.RequestCodes;
+import com.wz.latte_core.ui.scanner.ScannerDelegate;
 import com.wz.latte_core.util.callback.CallbackManager;
 import com.wz.latte_core.util.callback.CallbackType;
 import com.wz.latte_core.util.callback.IGlobalCallback;
@@ -37,6 +39,16 @@ public abstract class PermissionCheckerDelegate extends BaseDelegate {
     //这个是真正调用的方法
     public void startCameraWithCheck() {
         PermissionCheckerDelegatePermissionsDispatcher.startCameraWithPermissionCheck(this);
+    }
+
+    //扫码二维码(不直接调用)
+    @NeedsPermission({Manifest.permission.CAMERA})
+    void startScan(BaseDelegate delegate) {
+        delegate.getSupportDelegate().startForResult(new ScannerDelegate(), RequestCodes.SCAN);
+    }
+
+    public void startScanWithCheck(BaseDelegate delegate) {
+        PermissionCheckerDelegatePermissionsDispatcher.startScanWithPermissionCheck(this, delegate);
     }
 
     @Override
@@ -120,6 +132,21 @@ public abstract class PermissionCheckerDelegate extends BaseDelegate {
                     break;
                 default:
                     break;
+            }
+        }
+    }
+
+    @Override
+    public void onFragmentResult(int requestCode, int resultCode, Bundle data) {
+        super.onFragmentResult(requestCode, resultCode, data);
+        if (requestCode == RequestCodes.SCAN) {
+            if (data != null) {
+                final String qrCode = data.getString("SCAN_RESULT");
+                final IGlobalCallback<String> callback = CallbackManager.getInstance()
+                        .getCallback(CallbackType.ON_SCAN);
+                if (callback != null) {
+                    callback.executeCallback(qrCode);
+                }
             }
         }
     }
