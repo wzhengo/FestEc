@@ -16,6 +16,7 @@ import com.wz.latte_core.delegate.bottom.BottomItemDelegate;
 import com.wz.latte_core.util.callback.CallbackManager;
 import com.wz.latte_core.util.callback.CallbackType;
 import com.wz.latte_core.util.callback.IGlobalCallback;
+import com.wz.latte_ec.main.index.search.SearchDelegate;
 import com.wz.latte_ui.recycler.BaseDecoration;
 import com.wz.latte_ui.refresh.RefreshHandler;
 import com.wz.latte_ec.R;
@@ -28,7 +29,7 @@ import butterknife.OnClick;
 /**
  * Created by WangZhen on 2019-04-28.
  */
-public class IndexDelegate extends BottomItemDelegate {
+public class IndexDelegate extends BottomItemDelegate implements View.OnFocusChangeListener {
 
     @BindView(R2.id.rv_index)
     RecyclerView mRecycleView;
@@ -89,5 +90,13 @@ public class IndexDelegate extends BottomItemDelegate {
                         Toast.makeText(getContext(), args, Toast.LENGTH_SHORT).show();
                     }
                 });
+        mSearchView.setOnFocusChangeListener(this);
+    }
+
+    @Override
+    public void onFocusChange(View v, boolean hasFocus) {
+        if (hasFocus){
+            getParentDelegate().getSupportDelegate().start(new SearchDelegate());
+        }
     }
 }
